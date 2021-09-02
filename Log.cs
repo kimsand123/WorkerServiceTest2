@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using WorkerServiceTest2.Config;
 
 namespace WorkerServiceTest2
 {
@@ -13,7 +14,14 @@ namespace WorkerServiceTest2
         {
             string encryptedMessage = encrypt(message);
             string path = Directory.GetCurrentDirectory();
-            string file = "\\DRMLog.txt";
+            string file = "";
+            if (Singleton.Instance.osPlatform.Contains("Win"))
+            {
+                file = "\\DRMLog.txt";
+            } else
+            {
+                file = "/DRMlog.txt";
+            }
             try
             {
                 File.AppendAllTextAsync(path + file, encryptedMessage + "\n") ;
