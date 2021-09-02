@@ -13,6 +13,7 @@ namespace WorkerServiceTest2.Config
     internal sealed class Singleton
     {
         internal string osPlatform = null;
+        internal string LOGFILE = "DRMLog.txt";
 
         internal Singleton()
         {

@@ -14,13 +14,11 @@ namespace WorkerServiceTest2
         {
             string encryptedMessage = encrypt(message);
             string path = Directory.GetCurrentDirectory();
-            
-            string file = "DRMLog.txt";
-           
-            Console.WriteLine("path and file: " + Path.Combine(path, file));
+            Console.WriteLine("path and file: " + Path.Combine(path, Singleton.Instance.LOGFILE));
             try
             {
-                File.AppendAllTextAsync(Path.Combine(path, file), encryptedMessage + "\n") ;
+                //Path.Combine() takes into consideration which OS it is combining for, so 
+                File.AppendAllTextAsync(Path.Combine(path, Singleton.Instance.LOGFILE), encryptedMessage + "\n") ;
             }
             catch (IOException ioE)
             {
